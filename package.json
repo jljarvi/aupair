@@ -1,35 +1,10 @@
 {
   "name": "aupair",
-  "displayName": "aupair",
-  "description": "Customisable, local Retrieval-Augmented Generation (RAG) in VS Code",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.96.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
   "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "aupair.helloWorld",
-        "title": "Hello World"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
-  },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
+    "@types/node": "^22.13.0",
     "@types/vscode": "^1.96.0",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
@@ -38,5 +13,39 @@
     "esbuild": "^0.24.2",
     "eslint": "^9.19.0",
     "typescript": "^5.7.3"
+  },
+  "activationEvents": [],
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "rag.attachFile",
+        "title": "Attach to AI Query"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "rag.attachFile",
+          "when": "resourceLangId == python",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "description": "Customisable, local Retrieval-Augmented Generation (RAG) in VS Code",
+  "displayName": "aupair",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
   }
 }
